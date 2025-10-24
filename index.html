@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .form{
+            width: 300px;
+            margin: 100px auto;
+        }
+        .form input{
+
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    
+     <div class="form">
+        <input type="email" id="email" placeholder=".....@gamil.com">
+        <input type="password" id="password" placeholder="*******">
+        <button id="signup" onclick="signupUser()">Signup</button>
+     </div>
+
 </body>
 <script type="module" src="./app.js" ></script>
 </html>
