@@ -1,6 +1,6 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAuth , createUserWithEmailAndPassword  } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js'
+  import { getAuth , createUserWithEmailAndPassword ,signInWithEmailAndPassword  } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js'
 
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,3 +28,14 @@
   }
   const signup = document.getElementById("signup");
   signup.addEventListener("click",signupUser)
+
+   function signInUser(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  signInWithEmailAndPassword(auth,email,password).then((usercerdintial)=>{
+    console.log(usercerdintial.user.uid);
+  })
+  }
+  const signin = document.getElementById("sign_in");
+  signin.addEventListener("click",signInUser)
+ 
