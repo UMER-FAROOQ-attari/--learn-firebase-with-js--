@@ -37,14 +37,7 @@
   }
   readdata()
   console.log("good")
-  const auth = getAuth(app)
-  function signupUser(){
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  createUserWithEmailAndPassword(auth,email,password).then((usercerdintial)=>{
-    console.log(usercerdintial.user.uid);
-  })
-  }
+
 
 //  const signUp = document.getElementById("signup")
 

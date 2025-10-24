@@ -18,3 +18,13 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+  function signupUser(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  createUserWithEmailAndPassword(auth,email,password).then((usercerdintial)=>{
+    console.log(usercerdintial.user.uid);
+  })
+  }
+  const signup = document.getElementById("signup");
+  signup.addEventListener("click",signupUser)
