@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs ,doc, deleteDoc , updateDoc, deleteField} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, deleteField } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyASJMggxbUcQ15Qd5FJ0WaSzfX05agJbao",
@@ -17,14 +17,17 @@ const db = getFirestore(app);
 let addbtn = document.getElementById("addbtn");
 addbtn.addEventListener("click", async () => {
     let input = document.getElementById("input");
+    let taske = document.getElementById("taske");
 
     try {
         const docRef = await addDoc(collection(db, "taskes"), {
-            item: input.value
+            item: input.value,
+            task: taske.value
         });
         console.log("Document written with ID: ", docRef.id);
 
         input.value = "";
+        taske.value = ""
 
         read();
 
@@ -39,23 +42,37 @@ let read = async () => {
 
     const querySnapshot = await getDocs(collection(db, "taskes"));
     querySnapshot.forEach((doc) => {
-        list.innerHTML += `<li>${doc.data().item}
+        list.innerHTML += ` <li>${doc.data().item} : ${doc.data().task}
         <button onclick="deleteData('${doc.id}')">Delet</button>
-    <button onclick='editData()'>Edit</button>
+    <button onclick="editData('${doc.id}', '${doc.data().item}', '${doc.data().task}')" id="editbtn">Edit</button>
     </li>`;
     });
 }
 read();
-async function deleteData(e){
-await deleteDoc(doc(db, "taskes", e));
-read()
+async function deleteData(e) {
+    await deleteDoc(doc(db, "taskes", e));
+    read()
 }
 window.deleteData = deleteData
-async function editData(e){
-    const cityRef = doc(db, 'taskes', e);
 
-await updateDoc(cityRef, {
-    capital: deleteField()
-});
+async function editData(id, olditem, oldtask) {
+    let input = document.getElementById("input");
+    let taske = document.getElementById("taske");
+    let addbtn = document.getElementById("addbtn");
+  input.value=olditem;
+    taske.value=oldtask;
+    addbtn.innerText = "Update"
+   
+   addbtn.onclick=async()=>{
+    await updateDoc(doc(db,"taskes",id),{
+        item:input.value,
+        task:taske.value
+    })
+     addbtn.innerText = "Add";
+        input.value = "";
+        taske.value = "";
 
+        read();
+   }  
 }
+window.editData = editData
