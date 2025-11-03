@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Chat (WhatsApp style)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+   <aside class="sidebar">
+  <div class="brand">MyChat</div>
+
+  <div id="userInfo" class="user-info hidden">
+    <div id="meName"></div>
+    <button id="logoutBtn" class="logoutBtn">⎋ Logout</button>
+  </div>
+
+  <div id="authArea" class="auth-area">
+    <input id="nameInput" type="text" placeholder="Full name (for signup)" />
+    <input id="emailInput" type="email" placeholder="Email" />
+    <input id="passInput" type="password" placeholder="Password" />
+    <div class="auth-btns">
+      <button id="signupBtn">Sign Up</button>
+      <button id="loginBtn">Login</button>
+    </div>
+  </div>
+
+  <hr/>
+
+  <input id="searchInput" type="text" placeholder="Search user email..." />
+  <button id="searchBtn" class="search-btn">Search</button>
+
+</aside>
+
+    <!-- RIGHT: chat -->
+    <main class="chat-area">
+      <header class="chat-header">
+        <div id="chatWith">Select a user to chat</div>
+      </header>
+
+      <ul id="messages" class="messages"></ul>
+
+      <form id="messageForm" class="message-form hidden">
+        <input id="messageInput" type="text" placeholder="Type a message" autocomplete="off" />
+        <button id="sendBtn" type="submit">Send</button>
+      </form>
+    </main>
+
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
