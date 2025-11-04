@@ -1,70 +1,115 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #eef2ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #004aad, #cb6ce6);
+  animation: bgMove 6s infinite alternate;
+}
+
+/* Background Animation */
+@keyframes bgMove {
+  0% { background-position: left; }
+  100% { background-position: right; }
 }
 
 .container{
-    width: 350px;
-    padding: 25px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  width: 350px;
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  animation: fadeIn 1.2s ease;
 }
 
-.container h1{
-    margin-bottom: 15px;
-    text-align: center;
-    color: #333;
+/* Fade Form */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 25px;
 }
 
 input{
-    width: 100%;
-    padding: 10px;
-    margin: 7px 0;
-    border-radius: 6px;
-    border: 1px solid #aaa;
-    font-size: 15px;
-    transition: .3s;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  margin-bottom: 12px;
+  background: rgba(255,255,255,0.6);
+  font-size: 15px;
+  transition: 0.3s;
 }
 
 input:focus{
-    border-color: #6c5ce7;
-    outline: none;
-    box-shadow: 0 0 5px #6c5ce7;
+  background: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 0 10px #fff;
 }
 
 button{
-    width: 100%;
-    background: #6c5ce7;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: .3s;
-    margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: #ffca27;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+  font-weight: bold;
+  transition: 0.4s;
 }
 
 button:hover{
-    background: #4834d4;
+  background: #ffd84d;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
 #answer{
-    margin-top: 15px;
-    padding: 10px;
-    background: #f4f4ff;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    min-height: 30px;
+  margin-top: 15px;
+  font-size: 17px;
+  color: #333;
+}
+
+/* Table Style */
+#answer table{
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Heading */
+#answer th{
+  background: #C2E2FA;
+  padding: 8px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Data Rows */
+#answer td{
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Row Hover (Light and simple) */
+#answer tr:hover td{
+  background: #FFF1CB;
 }
